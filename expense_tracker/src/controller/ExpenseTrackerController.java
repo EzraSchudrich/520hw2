@@ -4,12 +4,13 @@ import view.ExpenseTrackerView;
 
 import java.util.List;
 
-
+import javax.swing.JOptionPane;
 
 import model.ExpenseTrackerModel;
 import model.Transaction;
+
 public class ExpenseTrackerController {
-  
+
   private ExpenseTrackerModel model;
   private ExpenseTrackerView view;
 
@@ -17,7 +18,48 @@ public class ExpenseTrackerController {
     this.model = model;
     this.view = view;
 
-    // Set up view event handlers
+    view.getFilterButton().addActionListener(e -> {
+      // Get transaction data from view
+      String type = view.getFilterType();
+      String input = view.getFilterInput();
+      List<Transaction> transactions = model.getTransactions();
+      boolean filtered = false;
+
+      // filters transactions based on filter type
+      if (type.equals("Amount <")) {
+        int numInput = Integer.parseInt(input);
+
+        if (InputValidation.isValidAmount(numInput)) {
+          // only apply filter if input is valid
+          removeAllTransactions();
+
+          for (int i = 0; i < transactions.size(); i++) {
+            if (transactions.get(i).getAmount() < numInput)
+              model.addTransaction(transactions.get(i));
+          }
+
+          filtered = true;
+        }
+
+      } else {
+        if (InputValidation.isValidCategory(input)) {
+          removeAllTransactions();
+
+          for (int i = 0; i < transactions.size(); i++) {
+            if (transactions.get(i).getCategory().equals(input))
+              model.addTransaction(transactions.get(i));
+          }
+
+          filtered = true;
+        }
+      }
+
+      refresh();
+      if (!filtered) {
+        JOptionPane.showMessageDialog(view, "Invalid amount or category entered");
+        view.toFront();
+      }
+    });
   }
 
   public void refresh() {
@@ -37,13 +79,18 @@ public class ExpenseTrackerController {
     if (!InputValidation.isValidCategory(category)) {
       return false;
     }
-    
+
     Transaction t = new Transaction(amount, category);
     model.addTransaction(t);
-    view.getTableModel().addRow(new Object[]{t.getAmount(), t.getCategory(), t.getTimestamp()});
+    view.getTableModel().addRow(new Object[] { t.getAmount(), t.getCategory(), t.getTimestamp() });
     refresh();
     return true;
   }
-  
-  // Other controller methods
+
+  private void removeAllTransactions() {
+    List<Transaction> transactions = model.getTransactions();
+    for (int i = 0; i < transactions.size(); i++) {
+      model.removeTransaction(transactions.get(i));
+    }
+  }
 }
