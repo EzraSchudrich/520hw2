@@ -76,5 +76,32 @@ public class TestExample {
         double totalCost = getTotalCost();
         assertEquals(0.00, totalCost, 0.01);
     }
-    
+
+    @Test
+    public void testInvalidInput() {
+        // Pre-condition: List of transactions is empty, transaction cost none
+        assertEquals(0, model.getTransactions().size());
+        assertEquals(0, model.getTotalCost()); //dont know if this needs to be model.get...
+
+        // Perform the action: Add a transaction
+        assertTrue("Transaction cost must not be above 1000", !controller.addTransaction(1001.00, "food")); 
+        //NEED TO CHECK FOR EROR MESSAGE like in testexample
+
+        // Post-condition: List of transactions and total cost remains unchanged
+        assertEquals(0, model.getTransactions().size());
+        assertEquals(0, model.getTotalCost()); 
+    }
+
+    @Test
+    public void testFilterByAmount() {
+        // Pre-condition: List of transactions is empty, transaction cost none
+        assertEquals(0, model.getTransactions().size());
+
+        Transaction addedTransaction = new Transaction(30.00, "Groceries");
+        Transaction addedTransaction = new Transaction(150.00, "Drinks");
+        Transaction addedTransaction = new Transaction(30.00, "Paper");
+
+        //finish later
+    }
+
 }
