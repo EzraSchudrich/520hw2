@@ -2,6 +2,7 @@
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.beans.Transient;
 import java.util.List;
 
 import org.junit.Before;
@@ -99,9 +100,9 @@ public class TestExample {
         // Pre-condition: List of transactions is empty, transaction cost none
         assertEquals(0, model.getTransactions().size());
 
-        Transaction addedTransaction = new Transaction(30.00, "Groceries");
-        Transaction addedTransaction_2 = new Transaction(150.00, "Drinks");
-        Transaction addedTransaction_3 = new Transaction(30.00, "Paper");
+        Transaction addedTransaction = new Transaction(30.00, "food");
+        Transaction addedTransaction_2 = new Transaction(150.00, "travel");
+        Transaction addedTransaction_3 = new Transaction(30.00, "other");
 
         model.addTransaction(addedTransaction);
         model.addTransaction(addedTransaction_2); //add transactions many times
@@ -118,8 +119,6 @@ public class TestExample {
         }
         assertEquals(totalCost, 60.00, 0.01);
         //check if cost is correct ts)
-
-        //finish later
     }
 
     @Test
@@ -127,14 +126,14 @@ public class TestExample {
         // Pre-condition: List of transactions is empty, transaction cost none
         assertEquals(0, model.getTransactions().size());
 
-        Transaction addedTransaction = new Transaction(30.00, "Groceries");
-        Transaction addedTransaction_2 = new Transaction(150.00, "Drinks");
-        Transaction addedTransaction_3 = new Transaction(35.00, "Groceries");
+        Transaction addedTransaction = new Transaction(30.00, "food");
+        Transaction addedTransaction_2 = new Transaction(150.00, "travel");
+        Transaction addedTransaction_3 = new Transaction(35.00, "food");
 
         model.addTransaction(addedTransaction);
         model.addTransaction(addedTransaction_2); //add transactions a lot
         model.addTransaction(addedTransaction_3);
-        CategoryFilter filt = new CategoryFilter("Groceries");// i cannnot loll
+        CategoryFilter filt = new CategoryFilter("food");// i cannnot loll
         List<Transaction> filtered = filt.filter(model.getTransactions());
 
         //checking list is correct here
@@ -146,8 +145,6 @@ public class TestExample {
         }
         assertEquals(totalCost, 65.00, 0.01);
         //check if cost is correct ts (65)
-
-        //finish later
     }
 
 }
