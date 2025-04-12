@@ -12,8 +12,8 @@ import model.ExpenseTrackerModel;
 import model.Transaction;
 import view.ExpenseTrackerView;
 
-import filters.AmountFilter;
-import filters.CategoryFilter;
+import filter.AmountFilter;
+import filter.CategoryFilter;
 
 public class TestExample {
   
@@ -134,7 +134,7 @@ public class TestExample {
         model.addTransaction(addedTransaction);
         model.addTransaction(addedTransaction_2); //add transactions a lot
         model.addTransaction(addedTransaction_3);
-        AmountFilter filt = new CategoryFilter("Groceries");// i cannnot loll
+        CategoryFilter filt = new CategoryFilter("Groceries");// i cannnot loll
         List<Transaction> filtered = filt.filter(model.getTransactions());
 
         //checking list is correct here
