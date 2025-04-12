@@ -12,6 +12,8 @@ import model.ExpenseTrackerModel;
 import model.Transaction;
 import view.ExpenseTrackerView;
 
+import filters.AmountFilter;
+import filters.CategoryFilter;
 
 public class TestExample {
   
@@ -81,15 +83,15 @@ public class TestExample {
     public void testInvalidInput() {
         // Pre-condition: List of transactions is empty, transaction cost none
         assertEquals(0, model.getTransactions().size());
-        assertEquals(0, model.getTotalCost()); //dont know if this needs to be model.get...
+        assertEquals(0, getTotalCost()); //dont know if this needs to be model.get...
 
         // Perform the action: Add a transaction
-        assertTrue("Transaction cost must not be above 1000", !controller.addTransaction(1001.00, "food")); 
+        assertTrue(!controller.addTransaction(1001.00, "food")); 
         //NEED TO CHECK FOR EROR MESSAGE like in testexample
 
         // Post-condition: List of transactions and total cost remains unchanged
         assertEquals(0, model.getTransactions().size());
-        assertEquals(0, model.getTotalCost()); 
+        assertEquals(0, getTotalCost()); 
     }
 
     @Test
@@ -98,8 +100,52 @@ public class TestExample {
         assertEquals(0, model.getTransactions().size());
 
         Transaction addedTransaction = new Transaction(30.00, "Groceries");
-        Transaction addedTransaction = new Transaction(150.00, "Drinks");
-        Transaction addedTransaction = new Transaction(30.00, "Paper");
+        Transaction addedTransaction_2 = new Transaction(150.00, "Drinks");
+        Transaction addedTransaction_3 = new Transaction(30.00, "Paper");
+
+        model.addTransaction(addedTransaction);
+        model.addTransaction(addedTransaction_2); //add transactions many times
+        model.addTransaction(addedTransaction_3);
+        AmountFilter filt = new AmountFilter(30.00);// i cant XD
+        List<Transaction> filtered = filt.filter(model.getTransactions());
+
+        //checking list is correct
+        assertEquals(2, filtered.size());
+
+        double totalCost = 0;
+        for (Transaction transaction : filtered) {// use loop
+            totalCost += transaction.getAmount();
+        }
+        assertEquals(totalCost, 60);
+        //check if cost is correct ts)
+
+        //finish later
+    }
+
+    @Test
+    public void testFilterByCategory() {
+        // Pre-condition: List of transactions is empty, transaction cost none
+        assertEquals(0, model.getTransactions().size());
+
+        Transaction addedTransaction = new Transaction(30.00, "Groceries");
+        Transaction addedTransaction_2 = new Transaction(150.00, "Drinks");
+        Transaction addedTransaction_3 = new Transaction(35.00, "Groceries");
+
+        model.addTransaction(addedTransaction);
+        model.addTransaction(addedTransaction_2); //add transactions a lot
+        model.addTransaction(addedTransaction_3);
+        AmountFilter filt = new CategoryFilter("Groceries");// i cannnot loll
+        List<Transaction> filtered = filt.filter(model.getTransactions());
+
+        //checking list is correct here
+        assertEquals(2, filtered.size()); // right here
+
+        double totalCost = 0;
+        for (Transaction transaction : filtered) {// use loop
+            totalCost += transaction.getAmount();
+        }
+        assertEquals(totalCost, 65);
+        //check if cost is correct ts (65)
 
         //finish later
     }
