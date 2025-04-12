@@ -83,7 +83,7 @@ public class TestExample {
     public void testInvalidInput() {
         // Pre-condition: List of transactions is empty, transaction cost none
         assertEquals(0, model.getTransactions().size());
-        assertEquals(0, getTotalCost()); //dont know if this needs to be model.get...
+        assertEquals(0.00, getTotalCost(), 0.01); //dont know if this needs to be model.get...
 
         // Perform the action: Add a transaction
         assertTrue(!controller.addTransaction(1001.00, "food")); 
@@ -91,7 +91,7 @@ public class TestExample {
 
         // Post-condition: List of transactions and total cost remains unchanged
         assertEquals(0, model.getTransactions().size());
-        assertEquals(0, getTotalCost()); 
+        assertEquals(0.00, getTotalCost(), 0.01); 
     }
 
     @Test
@@ -116,7 +116,7 @@ public class TestExample {
         for (Transaction transaction : filtered) {// use loop
             totalCost += transaction.getAmount();
         }
-        assertEquals(totalCost, 60);
+        assertEquals(totalCost, 60.00, 0.01);
         //check if cost is correct ts)
 
         //finish later
@@ -144,7 +144,7 @@ public class TestExample {
         for (Transaction transaction : filtered) {// use loop
             totalCost += transaction.getAmount();
         }
-        assertEquals(totalCost, 65);
+        assertEquals(totalCost, 65.00, 0.01);
         //check if cost is correct ts (65)
 
         //finish later
