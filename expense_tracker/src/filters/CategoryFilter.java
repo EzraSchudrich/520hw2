@@ -19,7 +19,7 @@ public class CategoryFilter implements TransactionFilter {
     public List<Transaction> filter(List<Transaction> transactions) {
         List<Transaction> filtered = new ArrayList<>();
         for (Transaction t : transactions) {
-            if (t.getCategory() == category) {
+            if (t.getCategory().equals(category)) {
                 filtered.add(t);
             }
         }
