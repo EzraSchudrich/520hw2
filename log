@@ -1,0 +1,59 @@
+commit c86e2cdc05252505bcfe1aabea807463af6e4bd8
+Author: EzraSchudrich <168489363+EzraSchudrich@users.noreply.github.com>
+Date:   Tue Apr 15 02:57:57 2025 +0000
+
+    updated readme
+
+commit 6784b0781a3eeae7439b746993ab733ceeebb6f8
+Author: EzraSchudrich <168489363+EzraSchudrich@users.noreply.github.com>
+Date:   Sat Apr 12 21:59:47 2025 +0000
+
+    testexample wasnt addedlast time whoops
+
+commit 867a62a0550d38d8525dea5cb40b5c21c4b0631e
+Author: EzraSchudrich <168489363+EzraSchudrich@users.noreply.github.com>
+Date:   Sat Apr 12 21:57:42 2025 +0000
+
+    think the tests are fixed for good. also fixed string comparison error in CategoryFIlter
+
+commit c72317519313b791991fd42d1cd889ecb6db5eee
+Author: EzraSchudrich <168489363+EzraSchudrich@users.noreply.github.com>
+Date:   Sat Apr 12 03:49:12 2025 +0000
+
+    FIXED more errors, youre welcome
+
+commit 0a5ef4ca07713c02dc4f6a81f1413bb87f2c7cb2
+Author: EzraSchudrich <168489363+EzraSchudrich@users.noreply.github.com>
+Date:   Sat Apr 12 03:38:32 2025 +0000
+
+    I have fixed the errors in the tests. Yes
+
+commit aa54b4470743ad3d6545d93f84245050ffc78748
+Author: EzraSchudrich <168489363+EzraSchudrich@users.noreply.github.com>
+Date:   Sat Apr 12 03:20:44 2025 +0000
+
+    Finished the tests lolll
+
+commit fafe129d18503392cdc04abae2f9dbc13660c7ac
+Author: EzraSchudrich <168489363+EzraSchudrich@users.noreply.github.com>
+Date:   Fri Apr 11 02:10:03 2025 +0000
+
+    Added testInvalidInput and part of testFilterByAmount
+
+commit 1a1427796f632fede5cda165e54eb9f3cf5e79ff
+Author: Joseph Kiriacos <50644377+jkiriacos@users.noreply.github.com>
+Date:   Thu Apr 10 23:35:53 2025 +0000
+
+    Added full filtering functionality.
+
+commit 276955291dc960a467ef6fd46490d16fdbbb954a
+Author: Joseph Kiriacos <50644377+jkiriacos@users.noreply.github.com>
+Date:   Thu Apr 10 22:00:16 2025 +0000
+
+    Followed Open-Closed Principles by updating ExpenseTrackerModel and Transaction
+
+commit 11e942b815ff0dc94b5c83f0818cb76ebae5b443
+Author: EzraSchudrich <eschudrich@gmail.com>
+Date:   Thu Apr 10 16:53:06 2025 -0400
+
+    Initial commit
