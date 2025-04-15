@@ -1,17 +1,21 @@
-# hw1- Manual Review
+# Expense Tracker
 
-The homework will be based on this project named "Expense Tracker",where users will be able to add/remove daily transaction. 
+Supported Features:
 
-## Compile
+- Add Transactions to an Expense Tracker
+- GUI for browsing past transactions
+- Date, price, and category tracking
+- Automatic total cost calculation
 
-To compile the code from terminal, use the following command:
-```
-cd src
-javac ExpenseTrackerApp.java
-java ExpenseTracker
-```
+Added Homework 2:
+- Transaction filter interface
+- Transaction filtering by amount or category
 
-You should be able to view the GUI of the project upon successful compilation. 
+Transaction class API:
 
-## Java Version
-This code is compiled with ```openjdk 17.0.7 2023-04-18```. Please update your JDK accordingly if you face any incompatibility issue.
+Transaction(double amount, String category)
+double getAmount()
+void setAmount(double amount)
+String getCategory()
+void setCategory(String category)
+String getTimestamp()
